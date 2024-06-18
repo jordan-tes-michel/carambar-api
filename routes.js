@@ -13,7 +13,7 @@ router.post('/blagues/add', (req, res) => {
             devinette: devinette,
             reponse: reponse
         })
-            .then(() => res.send('La blague a bien été ajoutée à la base de données'))
+            .then(blague => res.send(blague.toJSON()))
             .catch(err => res.send('Une erreur est survenue lors de l\'ajout de la blague: ' + err));
     } else {
         res.send('Impossible d\'ajouter la blague: un ou plusieurs attributs sont vides');
