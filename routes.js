@@ -1,29 +1,57 @@
 const express = require('express');
+const {Blague} = require('./database.js');
+const {Sequelize} = require("sequelize");
 const router = express.Router();
-
-router.get('/', (req, res) => {
-    res.send('Bienvenue sur mon serveur !');
-});
+router.use(express.json());
 
 router.post('/blagues/add', (req, res) => {
-    // TODO: Ajout d'une blague
-    res.send('Blague ajoutée');
+    const devinette = req.body.devinette;
+    const reponse = req.body.reponse;
+
+    if (devinette && reponse) {
+        Blague.create({
+            devinette: devinette,
+            reponse: reponse
+        })
+            .then(() => res.send('La blague a bien été ajoutée à la base de données'))
+            .catch(err => res.send('Une erreur est survenue lors de l\'ajout de la blague: ' + err));
+    } else {
+        res.send('Impossible d\'ajouter la blague: un ou plusieurs attributs sont vides');
+    }
 });
 
 router.get('/blagues', (req, res) => {
-    // TODO: Lister toutes les blagues
-    res.send('Voici la liste de toutes les blagues');
+    Blague.findAll().then(blagues => {
+            res.json(blagues)
+        }).catch(err => {
+            console.error(err);
+            res.status(500).json({error: 'Une erreur est survenue lors de la récupération des blagues'});
+        });
 });
 
 router.get('/blagues/random', (req, res) => {
-    // TODO: Récupérer une blague aléatoire
-    res.send('Voici une blague aléatoire');
+    Blague.findAll({
+        order: Sequelize.literal('random()'),
+        limit: 1
+    }).then(blagues => {
+        const blague = blagues[0];
+        res.json(blague);
+    }).catch(err => console.error(err));
 });
 
 router.get('/blagues/:id', (req, res) => {
-    // TODO: Récupérer une blague spécifique
     const id = req.params.id;
-    res.send(`Voici la blague demandée : ${id}`);
+    Blague.findAll({
+        where: {
+            id: id
+        }
+    }).then(blagues => {
+        const blague = blagues[0];
+        if (blague) {
+            res.json(blague);
+        }
+        res.send('Aucune blague ne correspond à l\'id ' + id);
+    }).catch(err => console.error(err));
 });
 
 module.exports = router;
