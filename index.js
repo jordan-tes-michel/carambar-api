@@ -4,8 +4,12 @@ const routes = require('./routes');
 
 const app = express();
 const port = 3000;
+const corsOptions = {
+    origin: '*',
+    optionsSuccessStatus: 200,
+}
 
-app.use(cors());
+app.use(cors(corsOptions));
 app.use('/', routes);
 
 app.listen(port, () => {
