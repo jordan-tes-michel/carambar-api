@@ -1,44 +1,43 @@
-# Blagues Carambar API
+# Blagues Carambar's API
 
-Bienvenue sur le dépôt de l'API blagues Carambar ! Cette API permet d'ajouter et de consulter des blagues de Carambar.
+Welcome on the Blagues Carambar's API! This API allows you to add and view Carambar's jokes.
 
-## Table des matières
+## Contents
 
-- [Fonctionnalités](#fonctionnalités)
-- [Comment commencer](#comment-commencer)
-- [Documentation API](#documentation-api)
-- [Contribution](#contribution)
+- [Features](#features)
+- [Getting started](#getting-started)
+- [API documentation](#api-documentation)
 - [Licence](#licence)
 
-## Fonctionnalités
+## Features
 
-- Ajouter une nouvelle blague Carambar.
-- Lister toutes les blagues Carambar.
-- Rechercher une blague spécifique.
-- Consulter une blague aléatoire
+- Add a new Carambar's joke.
+- View all Carambar's jokes.
+- View one specific Carmabar's joke.
+- View a random Carambar's joke.
 
-## Comment commencer
+## Getting Started
 
-Assurez-vous d'avoir Node.js et npm installés sur votre machine.
+Be sure Node.js and npm are installed on your machine.
 
-Clonez ce dépôt.
+Clone this repository.
 
-Installez les dépendances:
+Install dependencies:
 
 `cd carambar-api`
 
 `npm install`
 
-Exécutez l'API:
+Run the API:
 
 `npm start`
 
-## Documentation API
+## API documentation
 
-- POST /blagues/add - Ajoute une nouvelle blague
-- GET /blagues - Récupère toutes les blagues
-- GET /blagues/:id - Récupère une blague spécifique avec son ID
-- GET /blagues/random - Récupère une blague aléatoire
+- POST /blagues/add - Add a new joke
+- GET /blagues - Get all jokes
+- GET /blagues/:id - Get a joke by its ID
+- GET /blagues/random - Get a random joke
 
 ## Licence
 
