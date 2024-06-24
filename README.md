@@ -39,6 +39,8 @@ Run the API:
 - GET /blagues/:id - Get a joke by its ID
 - GET /blagues/random - Get a random joke
 
+[Swagger Documentation](https://app.swaggerhub.com/apis-docs/JORDANMICHEL13/Carambar_API/1.0.0)
+
 ## Licence
 
 [MIT](https://opensource.org/license/mit)
